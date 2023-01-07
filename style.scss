@@ -1,0 +1,291 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+////////////////////////////////////////////////////////
+$BGfirst:hsl(263, 55%, 52%);
+$BGsecond:hsl(217, 19%, 35%);
+$BGthird:hsl(219, 29%, 14%);
+$BGfourth:white;
+
+$textFirst: hsl(0, 0%, 81%);
+$textSecond:hsl(210, 46%, 95%);
+
+body{
+  font-size: 16px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  background-color: $textSecond;
+}
+
+
+
+
+///////////////////////////////////////////////////
+
+.gridWrapper{
+  margin-block: auto;
+  width: clamp(70vw, 1440px, 90vw);
+  height: fit-content;
+  display: grid; 
+  overflow: hidden;
+  border-radius: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 15px; 
+  
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 
+    "danielPost danielPost jonathanPost kiraPost"
+    "jeanettePost patrickPost patrickPost kiraPost"
+  
+}
+.post{
+  
+  
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding:2rem;
+  justify-content: space-between;
+  
+  h1{
+    font-weight: 600;
+    line-height: 1.4;
+    padding-block: 4%;
+    //flex-grow: 1;
+    font-size: clamp(0.5rem, 1.3vw, 3rem);
+  }
+  p{
+    height: 100%;
+    text-align: justify;
+    font-weight: 400;
+    padding: 0%;
+    opacity: 0.7;
+    font-size: clamp(0.5rem, 0.8vw, 1rem);
+    flex-grow: 1;
+    align-self: flex-end;
+  }
+}
+
+
+.danielPost {
+  display: flex;
+  justify-content: space-evenly;
+  color: $BGfourth;
+   grid-area: danielPost; 
+   background-color: $BGfirst;
+   background-image: url('images/bg-pattern-quotation.svg');
+   background-repeat: no-repeat;
+   background-position: 80% 0%;
+   background-size: 22%;
+   img{
+    border: 3px solid hsl(263, 82%, 68%);
+   }
+  }
+.jonathanPost {
+  color: $BGfourth;
+   grid-area: jonathanPost; 
+   background-color: $BGsecond;
+   img{
+    border: 3px solid rgba(255, 255, 255, 0.555);
+   }
+  }
+.kiraPost {
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.301);
+  color: $BGsecond ;
+   grid-area: kiraPost; 
+   background-color: $BGfourth;
+   
+  }
+.patrickPost {
+  color: $BGfourth;
+   grid-area: patrickPost;
+   background-color: $BGthird;
+   img{
+    border: 3px solid hsla(263, 55%, 52%, 0.63);
+   }
+  }
+.jeanettePost {
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.301);
+  color: $BGsecond; 
+   grid-area: jeanettePost; 
+   background-color: $BGfourth  ;
+   
+  }
+
+
+.personalStuff{
+  display: flex;
+  flex-direction: row;
+  max-height: 10%;
+  width: 100%;
+ 
+}
+
+.profilePicture{
+  border-radius: 50%;
+  width: 2vw;
+  height:2vw;
+  //flex-grow: 1;
+  aspect-ratio: 1/1;
+}
+
+.nameWrapper{
+  
+  display: flex;
+  flex-direction: column;
+  padding-inline:1rem;  
+  align-self: center;
+  h5{
+    margin: 0;
+    font-size: clamp(1rem, 1vw, 1rem);
+  }
+  h6{
+    margin: 0;
+    opacity: 0.5;
+    font-size: clamp(1rem, 0.7vw, 1rem);
+  }
+}
+
+
+
+@media only screen and (max-width:800px){
+  .gridWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-block: 5vh;
+  }
+  .jeanettePost, .kiraPost{
+    box-shadow: none;
+  }
+  .post{
+    h1{
+      font-weight: 600;
+      font-size:clamp(1rem, 6vw, 4rem)
+    }
+    p{
+      font-size: clamp(1rem, 1vw, 2rem);
+    }
+  }
+  .personalStuff{
+  img{
+    width: 10vw ;
+    height: 10vw;
+    align-self: center;
+  }}
+}
+
+
+@media only screen and (min-width:600px)and (max-width:800px){
+  .post{
+    h1{
+      font-weight: 600;
+      font-size:clamp(1.5rem, 6vw, 3rem)
+    }
+    p{
+      font-size: clamp(1.2rem, 1vw, 2rem);
+    }
+  }
+}
+
+
+@media only screen and (min-width:800px)and (max-width:1000px){
+.nameWrapper{
+  h5{
+    font-size: clamp(0.5rem, 0.5vw, 1.5rem);
+  }
+  h6{
+    font-size: clamp(0.5rem, 0.5vw, 1.5rem);
+  }
+}
+
+
+
+}
+
+@media only screen and (min-width:1000px)and (max-width:1200px){
+  .nameWrapper{
+    h5{
+      font-size: clamp(0.5rem, 0.5vw, 1.5rem);
+    }
+    h6{
+      font-size: clamp(0.5rem, 0.5vw, 1.5rem);
+    }
+  }
+}
